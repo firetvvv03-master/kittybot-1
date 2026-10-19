@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neon Letter Mayhem - Boss Edition with Pets & Quests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <title>Neon Letter Mayhem - Boss Edition with Pets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -137,45 +137,40 @@
         </div>
 
         <!-- Start / Game Over Overlay Modal -->
-        <div id="modal-overlay" class="absolute inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md z-30 transition-all duration-300 overflow-y-auto py-6">
-            <div class="glass-panel max-w-lg w-11/12 p-6 md:p-8 rounded-3xl flex flex-col items-center text-center border border-cyan-500/30 shadow-[0_0_50px_rgba(0,243,255,0.2)] my-auto">
+        <div id="modal-overlay" class="absolute inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md z-30 transition-all duration-300 overflow-y-auto py-4">
+            <div class="glass-panel max-w-lg w-11/12 p-5 rounded-3xl flex flex-col items-center text-center border border-cyan-500/30 shadow-[0_0_50px_rgba(0,243,255,0.2)] my-auto max-h-[90vh] overflow-y-auto">
                 
-                <h1 id="modal-title" class="text-3xl md:text-5xl font-black font-orbitron neon-title italic tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 via-fuchsia-400 to-amber-300 mb-2">
+                <h1 id="modal-title" class="text-2xl md:text-4xl font-black font-orbitron neon-title italic tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 via-fuchsia-400 to-amber-300 mb-1">
                     NEON MAYHEM
                 </h1>
-                <p id="modal-subtitle" class="text-xs md:text-sm text-cyan-200/80 mb-4 font-medium">
+                <p id="modal-subtitle" class="text-xs md:text-sm text-cyan-200/80 mb-3 font-medium">
                     Help Kitty-Bot dodge neon rains & cute giant bosses!
                 </p>
 
                 <!-- Final Score Display -->
-                <div id="score-summary" class="hidden flex-col items-center mb-4 w-full py-3 bg-white/5 rounded-2xl border border-white/10">
-                    <span class="text-xs text-gray-400 font-orbitron">FINAL SCORE</span>
-                    <span id="final-score" class="text-3xl md:text-4xl font-extrabold text-cyan-300 font-orbitron my-1">0</span>
-                    <span id="final-level" class="text-xs text-fuchsia-400 font-bold font-orbitron mb-1">MAX LEVEL: 1</span>
-                    <span id="new-best-tag" class="hidden text-xs font-bold text-amber-400 tracking-widest animate-bounce">★ NEW HIGH SCORE ★</span>
+                <div id="score-summary" class="hidden flex-col items-center mb-3 w-full py-2 bg-white/5 rounded-2xl border border-white/10">
+                    <span class="text-[10px] text-gray-400 font-orbitron">FINAL SCORE</span>
+                    <span id="final-score" class="text-2xl md:text-3xl font-extrabold text-cyan-300 font-orbitron my-0.5">0</span>
+                    <span id="final-level" class="text-[10px] text-fuchsia-400 font-bold font-orbitron mb-0.5">MAX LEVEL: 1</span>
+                    <span id="new-best-tag" class="hidden text-[10px] font-bold text-amber-400 tracking-widest animate-bounce">★ NEW HIGH SCORE ★</span>
                 </div>
 
                 <!-- Skins & Pets Shop Button -->
-                <button id="open-shop-btn" class="w-full py-2.5 px-6 mb-2 rounded-xl bg-slate-900/90 border border-fuchsia-500/50 text-fuchsia-300 font-bold font-orbitron text-sm tracking-wider flex items-center justify-center gap-2 hover:bg-fuchsia-950/40 transition-all">
+                <button id="open-shop-btn" class="w-full py-2 px-6 mb-3 rounded-xl bg-slate-900/90 border border-fuchsia-500/50 text-fuchsia-300 font-bold font-orbitron text-xs tracking-wider flex items-center justify-center gap-2 hover:bg-fuchsia-950/40 transition-all">
                     <span>🐱</span> WARDROBE, PETS & SHOP (<span id="shop-coins-val">0</span> 🪙)
                 </button>
 
-                <!-- Quests & Achievements Button -->
-                <button id="open-quests-btn" class="w-full py-2.5 px-6 mb-4 rounded-xl bg-slate-900/90 border border-cyan-500/50 text-cyan-300 font-bold font-orbitron text-sm tracking-wider flex items-center justify-center gap-2 hover:bg-cyan-950/40 transition-all">
-                    <span>📜</span> DAILY QUESTS & ACHIEVEMENTS
-                </button>
-
                 <!-- Controls Guide Section -->
-                <div class="w-full bg-slate-900/60 rounded-2xl p-3 mb-4 border border-cyan-900/50 text-left text-xs text-gray-300 space-y-1.5">
-                    <div class="font-bold text-cyan-400 font-orbitron mb-1 text-center uppercase tracking-wider">Controls</div>
-                    <div class="flex justify-between items-center"><span class="text-gray-400">Move Left / Right:</span> <span class="font-bold text-white bg-slate-800 px-2 py-0.5 rounded border border-gray-700">A / D or ← / →</span></div>
-                    <div class="flex justify-between items-center"><span class="text-gray-400">Jump / Double Jump:</span> <span class="font-bold text-white bg-slate-800 px-2 py-0.5 rounded border border-gray-700">W / ↑ (Press Twice)</span></div>
-                    <div class="flex justify-between items-center"><span class="text-gray-400">Burst Dash:</span> <span class="font-bold text-white bg-slate-800 px-2 py-0.5 rounded border border-gray-700">SHIFT</span></div>
-                    <div class="flex justify-between items-center"><span class="text-gray-400">Boss Skills (During Boss):</span> <span class="font-bold text-white bg-slate-800 px-2 py-0.5 rounded border border-gray-700">1, 2, 3 Keys</span></div>
+                <div class="w-full bg-slate-900/60 rounded-2xl p-2.5 mb-3 border border-cyan-900/50 text-left text-[11px] text-gray-300 space-y-1">
+                    <div class="font-bold text-cyan-400 font-orbitron mb-0.5 text-center uppercase tracking-wider">Controls</div>
+                    <div class="flex justify-between items-center"><span class="text-gray-400">Move Left / Right:</span> <span class="font-bold text-white bg-slate-800 px-1.5 py-0.5 rounded border border-gray-700">A / D or ← / →</span></div>
+                    <div class="flex justify-between items-center"><span class="text-gray-400">Jump / Double Jump:</span> <span class="font-bold text-white bg-slate-800 px-1.5 py-0.5 rounded border border-gray-700">W / ↑ (Press Twice)</span></div>
+                    <div class="flex justify-between items-center"><span class="text-gray-400">Burst Dash:</span> <span class="font-bold text-white bg-slate-800 px-1.5 py-0.5 rounded border border-gray-700">SHIFT</span></div>
+                    <div class="flex justify-between items-center"><span class="text-gray-400">Boss Skills (During Boss):</span> <span class="font-bold text-white bg-slate-800 px-1.5 py-0.5 rounded border border-gray-700">1, 2, 3 Keys</span></div>
                 </div>
 
                 <!-- Start / Restart Button -->
-                <button id="start-btn" class="w-full py-3.5 px-8 rounded-2xl bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-amber-400 text-slate-950 font-black font-orbitron text-lg tracking-wider btn-glow cursor-pointer">
+                <button id="start-btn" class="w-full py-3 px-8 rounded-2xl bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-amber-400 text-slate-950 font-black font-orbitron text-base tracking-wider btn-glow cursor-pointer">
                     START RUN
                 </button>
             </div>
@@ -183,73 +178,43 @@
 
         <!-- Pause Menu Modal -->
         <div id="pause-modal" class="hidden absolute inset-0 flex items-center justify-center bg-black/90 backdrop-blur-md z-40">
-            <div class="glass-panel max-w-sm w-11/12 p-6 rounded-3xl flex flex-col items-center text-center border border-cyan-500/50 shadow-[0_0_50px_rgba(0,243,255,0.3)]">
-                <h2 class="text-2xl font-black font-orbitron text-cyan-300 mb-4 tracking-wider">GAME PAUSED</h2>
-                <button id="resume-btn" class="w-full py-3 mb-3 rounded-xl bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-slate-950 font-black font-orbitron text-sm tracking-wider btn-glow">
+            <div class="glass-panel max-w-sm w-11/12 p-5 rounded-3xl flex flex-col items-center text-center border border-cyan-500/50 shadow-[0_0_50px_rgba(0,243,255,0.3)]">
+                <h2 class="text-xl font-black font-orbitron text-cyan-300 mb-3 tracking-wider">GAME PAUSED</h2>
+                <button id="resume-btn" class="w-full py-2.5 mb-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-slate-950 font-black font-orbitron text-xs tracking-wider btn-glow">
                     RESUME GAME
                 </button>
-                <button id="pause-shop-btn" class="w-full py-3 mb-3 rounded-xl bg-slate-900 border border-fuchsia-500/60 text-fuchsia-300 font-bold font-orbitron text-sm tracking-wider hover:bg-fuchsia-950/30">
+                <button id="pause-shop-btn" class="w-full py-2.5 mb-2.5 rounded-xl bg-slate-900 border border-fuchsia-500/60 text-fuchsia-300 font-bold font-orbitron text-xs tracking-wider hover:bg-fuchsia-950/30">
                     WARDROBE & PETS SHOP
                 </button>
-                <button id="pause-quests-btn" class="w-full py-3 mb-3 rounded-xl bg-slate-900 border border-cyan-500/60 text-cyan-300 font-bold font-orbitron text-sm tracking-wider hover:bg-cyan-950/30">
-                    QUESTS & ACHIEVEMENTS
-                </button>
-                <button id="quit-to-menu-btn" class="w-full py-2.5 rounded-xl bg-slate-800 border border-gray-600 text-gray-300 font-bold font-orbitron text-xs tracking-wider hover:bg-slate-700">
+                <button id="quit-to-menu-btn" class="w-full py-2 rounded-xl bg-slate-800 border border-gray-600 text-gray-300 font-bold font-orbitron text-[11px] tracking-wider hover:bg-slate-700">
                     QUIT TO MAIN MENU
                 </button>
             </div>
         </div>
 
         <!-- Skins & Pets Shop Modal -->
-        <div id="shop-modal" class="hidden absolute inset-0 flex items-center justify-center bg-black/90 backdrop-blur-lg z-50 overflow-y-auto py-6">
-            <div class="glass-panel max-w-xl w-11/12 p-6 rounded-3xl flex flex-col items-center border border-fuchsia-500/40 shadow-[0_0_60px_rgba(255,0,255,0.25)] my-auto">
-                <div class="flex justify-between w-full items-center mb-3">
-                    <h2 class="text-xl md:text-2xl font-black font-orbitron text-fuchsia-400">WARDROBE & PETS SHOP</h2>
-                    <div class="text-amber-300 font-bold font-orbitron text-sm">🪙 <span id="modal-coin-val">0</span> Coins</div>
+        <div id="shop-modal" class="hidden absolute inset-0 flex items-center justify-center bg-black/90 backdrop-blur-lg z-50 overflow-y-auto py-4">
+            <div class="glass-panel max-w-xl w-11/12 p-5 rounded-3xl flex flex-col items-center border border-fuchsia-500/40 shadow-[0_0_60px_rgba(255,0,255,0.25)] my-auto max-h-[90vh]">
+                <div class="flex justify-between w-full items-center mb-2.5">
+                    <h2 class="text-lg md:text-xl font-black font-orbitron text-fuchsia-400">WARDROBE & PETS SHOP</h2>
+                    <div class="text-amber-300 font-bold font-orbitron text-xs">🪙 <span id="modal-coin-val">0</span> Coins</div>
                 </div>
 
                 <!-- Shop Tabs -->
-                <div class="flex gap-2 w-full mb-4">
-                    <button id="tab-kitty-btn" onclick="switchShopTab('kitty')" class="flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-fuchsia-500 bg-fuchsia-600 text-white transition-all">🐱 KITTY</button>
-                    <button id="tab-object-btn" onclick="switchShopTab('object')" class="flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-cyan-500/50 bg-slate-900 text-cyan-300 transition-all">📦 OBJECTS</button>
-                    <button id="tab-pet-btn" onclick="switchShopTab('pet')" class="flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-amber-500/50 bg-slate-900 text-amber-300 transition-all">🐾 PETS (10)</button>
+                <div class="flex gap-2 w-full mb-3">
+                    <button id="tab-kitty-btn" onclick="switchShopTab('kitty')" class="flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-fuchsia-500 bg-fuchsia-600 text-white transition-all">🐱 KITTY</button>
+                    <button id="tab-object-btn" onclick="switchShopTab('object')" class="flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-cyan-500/50 bg-slate-900 text-cyan-300 transition-all">📦 OBJECTS</button>
+                    <button id="tab-pet-btn" onclick="switchShopTab('pet')" class="flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-amber-500/50 bg-slate-900 text-amber-300 transition-all">🐾 PETS (10)</button>
                 </div>
 
-                <p id="shop-subtitle" class="text-xs text-gray-300 mb-4 text-center">Unlock custom Kitty-Bot skins!</p>
+                <p id="shop-subtitle" class="text-[11px] text-gray-300 mb-3 text-center">Unlock custom Kitty-Bot skins!</p>
 
                 <!-- Skins / Pets Grid -->
-                <div id="skins-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3 w-full max-h-[45vh] overflow-y-auto pr-1 mb-5">
+                <div id="skins-grid" class="grid grid-cols-2 md:grid-cols-3 gap-2.5 w-full max-h-[38vh] overflow-y-auto pr-1 mb-4">
                     <!-- Dynamic Cards populated via JS -->
                 </div>
 
-                <button id="close-shop-btn" class="py-2.5 px-8 rounded-xl bg-slate-800 border border-gray-600 text-white font-bold font-orbitron text-sm tracking-wider hover:bg-slate-700 transition-all">
-                    BACK
-                </button>
-            </div>
-        </div>
-
-        <!-- Quests & Achievements Modal -->
-        <div id="quests-modal" class="hidden absolute inset-0 flex items-center justify-center bg-black/90 backdrop-blur-lg z-50 overflow-y-auto py-6">
-            <div class="glass-panel max-w-xl w-11/12 p-6 rounded-3xl flex flex-col items-center border border-cyan-500/40 shadow-[0_0_60px_rgba(0,243,255,0.25)] my-auto">
-                <div class="flex justify-between w-full items-center mb-3">
-                    <h2 class="text-xl md:text-2xl font-black font-orbitron text-cyan-300">QUESTS & ACHIEVEMENTS</h2>
-                    <div class="text-amber-300 font-bold font-orbitron text-sm">🪙 <span id="quest-coin-val">0</span> Coins</div>
-                </div>
-
-                <!-- Quests & Achievements Tabs -->
-                <div class="flex gap-2 w-full mb-4">
-                    <button id="tab-daily-btn" onclick="switchQuestTab('daily')" class="flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-cyan-500 bg-cyan-600 text-slate-950 font-black transition-all">🌟 DAILY QUESTS (8-10)</button>
-                    <button id="tab-ach-btn" onclick="switchQuestTab('achievements')" class="flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-amber-500/50 bg-slate-900 text-amber-300 transition-all">🏆 ACHIEVEMENTS</button>
-                </div>
-
-                <p id="quest-subtitle" class="text-xs text-gray-300 mb-4 text-center">Complete 8-10 daily quests that refresh every day!</p>
-
-                <!-- Quests / Achievements List Container -->
-                <div id="quests-grid" class="flex flex-col gap-2.5 w-full max-h-[45vh] overflow-y-auto pr-1 mb-5">
-                    <!-- Dynamic List populated via JS -->
-                </div>
-
-                <button id="close-quests-btn" class="py-2.5 px-8 rounded-xl bg-slate-800 border border-gray-600 text-white font-bold font-orbitron text-sm tracking-wider hover:bg-slate-700 transition-all">
+                <button id="close-shop-btn" class="py-2 px-8 rounded-xl bg-slate-800 border border-gray-600 text-white font-bold font-orbitron text-xs tracking-wider hover:bg-slate-700 transition-all">
                     BACK
                 </button>
             </div>
@@ -257,33 +222,35 @@
 
         <!-- Ad Simulator Modal -->
         <div id="ad-modal" class="hidden absolute inset-0 flex items-center justify-center bg-black/95 backdrop-blur-xl z-50">
-            <div class="glass-panel max-w-sm w-11/12 p-6 rounded-3xl flex flex-col items-center text-center border border-amber-500/50">
-                <span class="text-3xl mb-2">📺</span>
-                <h3 class="text-lg font-black font-orbitron text-amber-300 mb-1">WATCHING SPONSORED AD</h3>
-                <p id="ad-timer-text" class="text-xs text-gray-300 mb-4">Unlocking item in 3 seconds...</p>
+            <div class="glass-panel max-w-sm w-11/12 p-5 rounded-3xl flex flex-col items-center text-center border border-amber-500/50">
+                <span class="text-2xl mb-1.5">📺</span>
+                <h3 class="text-base font-black font-orbitron text-amber-300 mb-1">WATCHING SPONSORED AD</h3>
+                <p id="ad-timer-text" class="text-xs text-gray-300 mb-3">Unlocking item in 3 seconds...</p>
                 <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden border border-amber-500/30">
                     <div id="ad-progress-bar" class="h-full bg-amber-400 w-full transition-all duration-1000"></div>
                 </div>
             </div>
         </div>
 
-        <!-- On-Screen Touch / Mobile Controls -->
-        <div id="mobile-controls" class="absolute bottom-4 left-4 right-4 flex justify-between items-center pointer-events-none z-20 md:hidden">
-            <div class="flex gap-2 pointer-events-auto">
-                <button id="btn-left" class="w-14 h-14 rounded-2xl bg-slate-900/80 border border-cyan-500/40 text-cyan-400 text-2xl font-bold flex items-center justify-center active:bg-cyan-500/30 active:scale-95 transition-all shadow-lg">
+        <!-- On-Screen Touch / Mobile Controls (Optimized for Landscape Left/Right Thumbs) -->
+        <div id="mobile-controls" class="absolute bottom-3 left-4 right-4 flex justify-between items-center pointer-events-none z-20 md:hidden">
+            <!-- Left Side: Directional Controls -->
+            <div class="flex gap-2.5 pointer-events-auto">
+                <button id="btn-left" class="w-16 h-14 rounded-2xl bg-slate-900/85 border border-cyan-500/50 text-cyan-400 text-2xl font-bold flex items-center justify-center active:bg-cyan-500/30 active:scale-95 transition-all shadow-lg">
                     ◀
                 </button>
-                <button id="btn-right" class="w-14 h-14 rounded-2xl bg-slate-900/80 border border-cyan-500/40 text-cyan-400 text-2xl font-bold flex items-center justify-center active:bg-cyan-500/30 active:scale-95 transition-all shadow-lg">
+                <button id="btn-right" class="w-16 h-14 rounded-2xl bg-slate-900/85 border border-cyan-500/50 text-cyan-400 text-2xl font-bold flex items-center justify-center active:bg-cyan-500/30 active:scale-95 transition-all shadow-lg">
                     ▶
                 </button>
             </div>
 
-            <div class="flex gap-2 pointer-events-auto">
-                <button id="btn-dash" class="w-14 h-14 rounded-2xl bg-slate-900/80 border border-amber-500/40 text-amber-400 text-xs font-black font-orbitron flex flex-col items-center justify-center active:bg-amber-500/30 active:scale-95 transition-all shadow-lg">
+            <!-- Right Side: Action Controls (Dash & Jump) -->
+            <div class="flex gap-2.5 pointer-events-auto">
+                <button id="btn-dash" class="w-16 h-14 rounded-2xl bg-slate-900/85 border border-amber-500/50 text-amber-400 text-[11px] font-black font-orbitron flex flex-col items-center justify-center active:bg-amber-500/30 active:scale-95 transition-all shadow-lg">
                     <span>⚡</span>
                     <span>DASH</span>
                 </button>
-                <button id="btn-jump" class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-fuchsia-600 to-cyan-500 text-white font-black font-orbitron text-sm flex items-center justify-center active:scale-95 transition-all shadow-xl shadow-fuchsia-500/20">
+                <button id="btn-jump" class="w-20 h-14 rounded-2xl bg-gradient-to-tr from-fuchsia-600 to-cyan-500 text-white font-black font-orbitron text-xs flex items-center justify-center active:scale-95 transition-all shadow-xl shadow-fuchsia-500/20">
                     JUMP
                 </button>
             </div>
@@ -420,7 +387,6 @@
         let isBossActive = false;
         let bossInstance = null;
 
-        // Boss Combat Skills state
         let skillCooldowns = { 1: 0, 2: 0, 3: 0 };
         const skillMaxCooldowns = { 1: 150, 2: 300, 3: 450 };
 
@@ -438,302 +404,6 @@
         let hasSingularity = false;
         let plasmaSlashes = [];
 
-        // ==========================================
-        // DAILY QUEST & PROGRESSIVE ACHIEVEMENT SYSTEM
-        // ==========================================
-        const TODAY_DATE_STR = new Date().toDateString();
-
-        // 10 Daily Quests template definitions
-        const DAILY_QUEST_TEMPLATES = [
-            { id: 'dq_score', title: 'Neon High Roller', desc: 'Score 5,000 points in total', target: 5000, reward: 50, type: 'score' },
-            { id: 'dq_coins', title: 'Coin Collector', desc: 'Collect 30 coins', target: 30, reward: 40, type: 'coins' },
-            { id: 'dq_dash', title: 'Hyper Dasher', desc: 'Use Dash 15 times', target: 15, reward: 35, type: 'dash' },
-            { id: 'dq_boss', title: 'Boss Slayer', desc: 'Defeat 1 Boss', target: 1, reward: 60, type: 'boss' },
-            { id: 'dq_level', title: 'Stage Crawler', desc: 'Reach Level 3', target: 3, reward: 45, type: 'level' },
-            { id: 'dq_combo', title: 'Combo Master', desc: 'Achieve a 10x Combo', target: 10, reward: 40, type: 'combo' },
-            { id: 'dq_survive', title: 'Endurance Test', desc: 'Survive for 120 seconds total', target: 120, reward: 50, type: 'time' },
-            { id: 'dq_powerup', title: 'Power-up Hunter', desc: 'Collect 3 Power-up Orbs', target: 3, reward: 45, type: 'powerup' },
-            { id: 'dq_skills', title: 'Combat Tactician', desc: 'Use 3 Boss Skills or Pet Skills', target: 3, reward: 55, type: 'skill' },
-            { id: 'dq_runs', title: 'Dedicated Runner', desc: 'Complete 3 Runs', target: 3, reward: 30, type: 'runs' }
-        ];
-
-        // Progressive Achievements (Harder and harder for each completed tier)
-        const ACHIEVEMENT_DEFINITIONS = [
-            {
-                id: 'ach_score',
-                name: 'Score Legend',
-                desc: 'Reach total lifetime score milestones',
-                tiers: [
-                    { target: 20000, reward: 100 },
-                    { target: 100000, reward: 300 },
-                    { target: 500000, reward: 1000 },
-                    { target: 2000000, reward: 3000 }
-                ],
-                type: 'lifetime_score'
-            },
-            {
-                id: 'ach_coins',
-                name: 'Vault Hoarder',
-                desc: 'Collect lifetime coins',
-                tiers: [
-                    { target: 100, reward: 100 },
-                    { target: 500, reward: 300 },
-                    { target: 2000, reward: 1000 },
-                    { target: 10000, reward: 3500 }
-                ],
-                type: 'lifetime_coins'
-            },
-            {
-                id: 'ach_boss',
-                name: 'Titan Bane',
-                desc: 'Defeat giant neon bosses',
-                tiers: [
-                    { target: 1, reward: 150 },
-                    { target: 5, reward: 500 },
-                    { target: 20, reward: 2000 },
-                    { target: 50, reward: 5000 }
-                ],
-                type: 'lifetime_boss'
-            },
-            {
-                id: 'ach_dash',
-                name: 'Lightning Reflexes',
-                desc: 'Use burst dashes',
-                tiers: [
-                    { target: 50, reward: 100 },
-                    { target: 250, reward: 400 },
-                    { target: 1000, reward: 1500 },
-                    { target: 5000, reward: 4000 }
-                ],
-                type: 'lifetime_dash'
-            },
-            {
-                id: 'ach_survive',
-                name: 'Neon Survivor',
-                desc: 'Accumulate survival time in seconds',
-                tiers: [
-                    { target: 300, reward: 150 },
-                    { target: 1500, reward: 600 },
-                    { target: 6000, reward: 2000 },
-                    { target: 20000, reward: 6000 }
-                ],
-                type: 'lifetime_time'
-            }
-        ];
-
-        // Load or initialize Daily Quests
-        let savedQuestData = JSON.parse(localStorage.getItem('neon_daily_quests')) || {};
-        if (savedQuestData.date !== TODAY_DATE_STR) {
-            // New day: generate fresh 8-10 quests (here all 10 templates)
-            savedQuestData = {
-                date: TODAY_DATE_STR,
-                quests: DAILY_QUEST_TEMPLATES.map(q => ({ ...q, progress: 0, completed: false, claimed: false }))
-            };
-            localStorage.setItem('neon_daily_quests', JSON.stringify(savedQuestData));
-        }
-
-        // Load or initialize Achievements Progress
-        let savedAchievementData = JSON.parse(localStorage.getItem('neon_achievements')) || {};
-        ACHIEVEMENT_DEFINITIONS.forEach(ach => {
-            if (!savedAchievementData[ach.id]) {
-                savedAchievementData[ach.id] = { tierIndex: 0, progress: 0 };
-            }
-        });
-        localStorage.setItem('neon_achievements', JSON.stringify(savedAchievementData));
-
-        let lifetimeStats = JSON.parse(localStorage.getItem('neon_lifetime_stats')) || {
-            lifetime_score: 0,
-            lifetime_coins: 0,
-            lifetime_boss: 0,
-            lifetime_dash: 0,
-            lifetime_time: 0
-        };
-
-        function saveGameProgress() {
-            localStorage.setItem('neon_daily_quests', JSON.stringify(savedQuestData));
-            localStorage.setItem('neon_achievements', JSON.stringify(savedAchievementData));
-            localStorage.setItem('neon_lifetime_stats', JSON.stringify(lifetimeStats));
-        }
-
-        function updateQuestProgress(type, amount) {
-            if (!savedQuestData.quests) return;
-            savedQuestData.quests.forEach(q => {
-                if (!q.completed && q.type === type) {
-                    q.progress = Math.min(q.target, q.progress + amount);
-                    if (q.progress >= q.target) {
-                        q.completed = true;
-                    }
-                }
-            });
-            saveGameProgress();
-        }
-
-        function updateLifetimeStat(type, amount) {
-            if (lifetimeStats[type] !== undefined) {
-                lifetimeStats[type] += amount;
-                saveGameProgress();
-
-                // Check achievements
-                ACHIEVEMENT_DEFINITIONS.forEach(ach => {
-                    if (ach.type === type) {
-                        const achState = savedAchievementData[ach.id];
-                        if (achState.tierIndex < ach.tiers.length) {
-                            achState.progress = lifetimeStats[type];
-                        }
-                    }
-                });
-            }
-        }
-
-        let activeQuestTab = 'daily';
-        const openQuestsBtn = document.getElementById('open-quests-btn');
-        const pauseQuestsBtn = document.getElementById('pause-quests-btn');
-        const closeQuestsBtn = document.getElementById('close-quests-btn');
-        const questsModal = document.getElementById('quests-modal');
-        const tabDailyBtn = document.getElementById('tab-daily-btn');
-        const tabAchBtn = document.getElementById('tab-ach-btn');
-        const questSubtitle = document.getElementById('quest-subtitle');
-        const questsGrid = document.getElementById('quests-grid');
-        const questCoinValEl = document.getElementById('quest-coin-val');
-
-        function updateQuestCoinsDisplay() {
-            questCoinValEl.textContent = coins;
-        }
-
-        window.switchQuestTab = function(tab) {
-            activeQuestTab = tab;
-            tabDailyBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-cyan-500/50 bg-slate-900 text-cyan-300 transition-all";
-            tabAchBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-amber-500/50 bg-slate-900 text-amber-300 transition-all";
-
-            if (tab === 'daily') {
-                tabDailyBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-cyan-500 bg-cyan-600 text-slate-950 font-black transition-all";
-                questSubtitle.textContent = "Complete 8-10 daily quests that refresh every day!";
-            } else {
-                tabAchBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-amber-500 bg-amber-600 text-slate-950 font-black transition-all";
-                questSubtitle.textContent = "Harder and harder progressive achievement tiers with big coin rewards!";
-            }
-            renderQuestsModal();
-        };
-
-        function renderQuestsModal() {
-            updateQuestCoinsDisplay();
-            questsGrid.innerHTML = '';
-
-            if (activeQuestTab === 'daily') {
-                savedQuestData.quests.forEach((q, idx) => {
-                    const pct = Math.min(100, (q.progress / q.target) * 100);
-                    const card = document.createElement('div');
-                    card.className = "skin-card p-3 rounded-2xl flex flex-col gap-2 relative";
-
-                    let actionHtml = '';
-                    if (q.claimed) {
-                        actionHtml = `<span class="text-xs font-bold text-gray-400 font-orbitron">CLAIMED ✓</span>`;
-                    } else if (q.completed) {
-                        actionHtml = `<button onclick="claimQuestReward(${idx})" class="py-1 px-4 rounded-lg bg-cyan-500 text-slate-950 text-xs font-black font-orbitron hover:bg-cyan-400">CLAIM 🪙 ${q.reward}</button>`;
-                    } else {
-                        actionHtml = `<span class="text-xs font-bold text-cyan-300 font-orbitron">${q.progress} / ${q.target}</span>`;
-                    }
-
-                    card.innerHTML = `
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="text-xs font-bold font-orbitron text-white">${q.title}</div>
-                                <div class="text-[10px] text-gray-300">${q.desc}</div>
-                            </div>
-                            <div>${actionHtml}</div>
-                        </div>
-                        <div class="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden mt-1">
-                            <div class="h-full bg-cyan-400 transition-all" style="width: ${pct}%"></div>
-                        </div>
-                    `;
-                    questsGrid.appendChild(card);
-                });
-            } else {
-                ACHIEVEMENT_DEFINITIONS.forEach(ach => {
-                    const achState = savedAchievementData[ach.id];
-                    const isMaxTier = achState.tierIndex >= ach.tiers.length;
-                    const currentTier = isMaxTier ? ach.tiers[ach.tiers.length - 1] : ach.tiers[achState.tierIndex];
-                    const prevTarget = achState.tierIndex === 0 ? 0 : ach.tiers[achState.tierIndex - 1].target;
-                    const rangeTarget = currentTier.target - prevTarget;
-                    const currentProgressInRange = Math.max(0, achState.progress - prevTarget);
-                    const pct = isMaxTier ? 100 : Math.min(100, (currentProgressInRange / rangeTarget) * 100);
-
-                    const card = document.createElement('div');
-                    card.className = "skin-card p-3 rounded-2xl flex flex-col gap-2 relative";
-
-                    let actionHtml = '';
-                    if (isMaxTier) {
-                        actionHtml = `<span class="text-xs font-bold text-amber-400 font-orbitron">MAX TIER ★</span>`;
-                    } else if (achState.progress >= currentTier.target) {
-                        actionHtml = `<button onclick="claimAchievementReward('${ach.id}')" class="py-1 px-4 rounded-lg bg-amber-500 text-slate-950 text-xs font-black font-orbitron hover:bg-amber-400">CLAIM TIER ${achState.tierIndex + 1} (🪙 ${currentTier.reward})</button>`;
-                    } else {
-                        actionHtml = `<span class="text-xs font-bold text-amber-300 font-orbitron">Tier ${achState.tierIndex + 1}: ${achState.progress} / ${currentTier.target}</span>`;
-                    }
-
-                    card.innerHTML = `
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="text-xs font-bold font-orbitron text-white">${ach.name} (Tier ${Math.min(achState.tierIndex + 1, ach.tiers.length)}/${ach.tiers.length})</div>
-                                <div class="text-[10px] text-gray-300">${ach.desc}</div>
-                            </div>
-                            <div>${actionHtml}</div>
-                        </div>
-                        <div class="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden mt-1">
-                            <div class="h-full bg-amber-400 transition-all" style="width: ${pct}%"></div>
-                        </div>
-                    `;
-                    questsGrid.appendChild(card);
-                });
-            }
-        }
-
-        window.claimQuestReward = function(idx) {
-            const q = savedQuestData.quests[idx];
-            if (q.completed && !q.claimed) {
-                q.claimed = true;
-                updateCoins(q.reward);
-                soundFX.playPowerup();
-                saveGameProgress();
-                renderQuestsModal();
-            }
-        };
-
-        window.claimAchievementReward = function(achId) {
-            const ach = ACHIEVEMENT_DEFINITIONS.find(a => a.id === achId);
-            const achState = savedAchievementData[achId];
-            if (achState.tierIndex < ach.tiers.length) {
-                const tier = ach.tiers[achState.tierIndex];
-                if (achState.progress >= tier.target) {
-                    updateCoins(tier.reward);
-                    achState.tierIndex++;
-                    soundFX.playPowerup();
-                    saveGameProgress();
-                    renderQuestsModal();
-                }
-            }
-        };
-
-        openQuestsBtn.addEventListener('click', () => {
-            renderQuestsModal();
-            questsModal.classList.remove('hidden');
-        });
-
-        pauseQuestsBtn.addEventListener('click', () => {
-            pauseModal.classList.add('hidden');
-            renderQuestsModal();
-            questsModal.classList.remove('hidden');
-        });
-
-        closeQuestsBtn.addEventListener('click', () => {
-            questsModal.classList.add('hidden');
-            if (isPaused) pauseModal.classList.remove('hidden');
-        });
-
-        // ==========================================
-        // END OF QUEST & ACHIEVEMENT SYSTEM
-        // ==========================================
-
-        // Kitty-Bot Skins
         const SKINS = [
             { id: 'cyber', name: 'Cyber Kitty', type: 'free', cost: 0, color: '#00f3ff', core: '#ffffff', ear: '#00f3ff' },
             { id: 'pinky', name: 'Neon Pinky', type: 'coin', cost: 100, color: '#ff00ff', core: '#ffe6ff', ear: '#ff00ff' },
@@ -747,7 +417,6 @@
             { id: 'unicorn', name: 'Rainbow Unicorn', type: 'ad', cost: 0, color: '#ff00aa', core: '#ffff99', ear: '#00ffff' }
         ];
 
-        // 10 Falling Object Skins
         const OBJECT_SKINS = [
             { id: 'obj_animals', name: '🐾 Cute Animals', category: 'Animals', type: 'coin', cost: 80, symbol: '🐱' },
             { id: 'obj_tools', name: '🔧 Cyber Tools', category: 'Tools', type: 'coin', cost: 120, symbol: '🔧' },
@@ -761,7 +430,6 @@
             { id: 'obj_music', name: '🎵 Synth Notes', category: 'Music', type: 'ad', cost: 0, symbol: '🎵' }
         ];
 
-        // Pet System (4 Coin Pets + 6 Ad Super Pets with 10s active skill)
         const PETS = [
             { id: 'pet_sparky', name: 'Sparky', type: 'coin', cost: 100, symbol: '⚡', power: 'Passively zaps a hazard every 15s' },
             { id: 'pet_shieldy', name: 'Shieldy', type: 'coin', cost: 200, symbol: '🛡️', power: 'Regenerates a shield every 45s' },
@@ -787,7 +455,6 @@
         let activeShopTab = 'kitty';
         let petSkillTimer = 0;
 
-        // UI References
         const scoreValEl = document.getElementById('score-val');
         const highscoreValEl = document.getElementById('highscore-val');
         const coinCountEl = document.getElementById('coin-count');
@@ -847,27 +514,22 @@
             coinCountEl.textContent = coins;
             shopCoinsValEl.textContent = coins;
             modalCoinValEl.textContent = coins;
-            questCoinValEl.textContent = coins;
-            if (amount > 0) {
-                updateQuestProgress('coins', amount);
-                updateLifetimeStat('lifetime_coins', amount);
-            }
         }
 
         window.switchShopTab = function(tab) {
             activeShopTab = tab;
-            tabKittyBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-fuchsia-500/50 bg-slate-900 text-fuchsia-300 transition-all";
-            tabObjectBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-cyan-500/50 bg-slate-900 text-cyan-300 transition-all";
-            tabPetBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-amber-500/50 bg-slate-900 text-amber-300 transition-all";
+            tabKittyBtn.className = "flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-fuchsia-500/50 bg-slate-900 text-fuchsia-300 transition-all";
+            tabObjectBtn.className = "flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-cyan-500/50 bg-slate-900 text-cyan-300 transition-all";
+            tabPetBtn.className = "flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-amber-500/50 bg-slate-900 text-amber-300 transition-all";
 
             if (tab === 'kitty') {
-                tabKittyBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-fuchsia-500 bg-fuchsia-600 text-white transition-all";
+                tabKittyBtn.className = "flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-fuchsia-500 bg-fuchsia-600 text-white transition-all";
                 shopSubtitle.textContent = "Unlock custom Kitty-Bot skins!";
             } else if (tab === 'object') {
-                tabObjectBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-cyan-500 bg-cyan-600 text-white transition-all";
+                tabObjectBtn.className = "flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-cyan-500 bg-cyan-600 text-white transition-all";
                 shopSubtitle.textContent = "Unlock 10 falling object skin packs (Animals, Tools, Space & more)!";
             } else {
-                tabPetBtn.className = "flex-1 py-2 rounded-xl font-bold font-orbitron text-xs border border-amber-500 bg-amber-600 text-slate-950 font-black transition-all";
+                tabPetBtn.className = "flex-1 py-1.5 rounded-xl font-bold font-orbitron text-xs border border-amber-500 bg-amber-600 text-slate-950 font-black transition-all";
                 shopSubtitle.textContent = "Equip cute Pets to help Kitty! 4 coin pets & 6 ad pets (active skills every 10s)!";
             }
             renderShop();
@@ -881,25 +543,25 @@
                     const isSelected = currentSkinId === skin.id;
 
                     const card = document.createElement('div');
-                    card.className = `skin-card p-3 rounded-2xl flex flex-col items-center justify-between text-center relative ${isSelected ? 'selected' : ''}`;
+                    card.className = `skin-card p-2.5 rounded-2xl flex flex-col items-center justify-between text-center relative ${isSelected ? 'selected' : ''}`;
                     
                     let actionBtnHTML = '';
                     if (isSelected) {
-                        actionBtnHTML = `<span class="text-xs font-bold text-cyan-400 font-orbitron py-1">EQUIPPED</span>`;
+                        actionBtnHTML = `<span class="text-[11px] font-bold text-cyan-400 font-orbitron py-1">EQUIPPED</span>`;
                     } else if (isUnlocked) {
-                        actionBtnHTML = `<button onclick="equipSkin('${skin.id}')" class="w-full py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-500 text-cyan-300 text-xs font-bold font-orbitron hover:bg-cyan-500/40">EQUIP</button>`;
+                        actionBtnHTML = `<button onclick="equipSkin('${skin.id}')" class="w-full py-1 rounded-lg bg-cyan-500/20 border border-cyan-500 text-cyan-300 text-[11px] font-bold font-orbitron hover:bg-cyan-500/40">EQUIP</button>`;
                     } else if (skin.type === 'coin') {
-                        actionBtnHTML = `<button onclick="buySkinWithCoins('${skin.id}', ${skin.cost})" class="w-full py-1.5 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-xs font-bold font-orbitron hover:bg-amber-500/40">🪙 ${skin.cost}</button>`;
+                        actionBtnHTML = `<button onclick="buySkinWithCoins('${skin.id}', ${skin.cost})" class="w-full py-1 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-[11px] font-bold font-orbitron hover:bg-amber-500/40">🪙 ${skin.cost}</button>`;
                     } else {
-                        actionBtnHTML = `<button onclick="watchAdForSkin('${skin.id}', 'kitty')" class="w-full py-1.5 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500 text-fuchsia-300 text-xs font-bold font-orbitron hover:bg-fuchsia-500/40">📺 WATCH AD</button>`;
+                        actionBtnHTML = `<button onclick="watchAdForSkin('${skin.id}', 'kitty')" class="w-full py-1 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500 text-fuchsia-300 text-[11px] font-bold font-orbitron hover:bg-fuchsia-500/40">📺 WATCH AD</button>`;
                     }
 
                     card.innerHTML = `
-                        <div class="flex items-center gap-1.5 mb-1">
-                            <div class="w-4 h-4 rounded-full border border-white/30" style="background:${skin.color}"></div>
-                            <span class="text-xs font-bold font-orbitron text-white">${skin.name}</span>
+                        <div class="flex items-center gap-1 mb-1">
+                            <div class="w-3.5 h-3.5 rounded-full border border-white/30" style="background:${skin.color}"></div>
+                            <span class="text-[11px] font-bold font-orbitron text-white">${skin.name}</span>
                         </div>
-                        <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-2">${skin.type === 'ad' ? 'Ad Unlock' : (skin.type === 'coin' ? 'Coin Store' : 'Default')}</div>
+                        <div class="text-[9px] text-gray-400 uppercase tracking-widest mb-1.5">${skin.type === 'ad' ? 'Ad Unlock' : (skin.type === 'coin' ? 'Coin Store' : 'Default')}</div>
                         ${actionBtnHTML}
                     `;
                     skinsGrid.appendChild(card);
@@ -910,25 +572,25 @@
                     const isSelected = currentObjectSkinId === skin.id;
 
                     const card = document.createElement('div');
-                    card.className = `skin-card p-3 rounded-2xl flex flex-col items-center justify-between text-center relative ${isSelected ? 'selected' : ''}`;
+                    card.className = `skin-card p-2.5 rounded-2xl flex flex-col items-center justify-between text-center relative ${isSelected ? 'selected' : ''}`;
                     
                     let actionBtnHTML = '';
                     if (isSelected) {
-                        actionBtnHTML = `<span class="text-xs font-bold text-cyan-400 font-orbitron py-1">EQUIPPED</span>`;
+                        actionBtnHTML = `<span class="text-[11px] font-bold text-cyan-400 font-orbitron py-1">EQUIPPED</span>`;
                     } else if (isUnlocked) {
-                        actionBtnHTML = `<button onclick="equipObjectSkin('${skin.id}')" class="w-full py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-500 text-cyan-300 text-xs font-bold font-orbitron hover:bg-cyan-500/40">EQUIP</button>`;
+                        actionBtnHTML = `<button onclick="equipObjectSkin('${skin.id}')" class="w-full py-1 rounded-lg bg-cyan-500/20 border border-cyan-500 text-cyan-300 text-[11px] font-bold font-orbitron hover:bg-cyan-500/40">EQUIP</button>`;
                     } else if (skin.type === 'coin') {
-                        actionBtnHTML = `<button onclick="buyObjectSkinWithCoins('${skin.id}', ${skin.cost})" class="w-full py-1.5 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-xs font-bold font-orbitron hover:bg-amber-500/40">🪙 ${skin.cost}</button>`;
+                        actionBtnHTML = `<button onclick="buyObjectSkinWithCoins('${skin.id}', ${skin.cost})" class="w-full py-1 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-[11px] font-bold font-orbitron hover:bg-amber-500/40">🪙 ${skin.cost}</button>`;
                     } else {
-                        actionBtnHTML = `<button onclick="watchAdForSkin('${skin.id}', 'object')" class="w-full py-1.5 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500 text-fuchsia-300 text-xs font-bold font-orbitron hover:bg-fuchsia-500/40">📺 WATCH AD</button>`;
+                        actionBtnHTML = `<button onclick="watchAdForSkin('${skin.id}', 'object')" class="w-full py-1 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500 text-fuchsia-300 text-[11px] font-bold font-orbitron hover:bg-fuchsia-500/40">📺 WATCH AD</button>`;
                     }
 
                     card.innerHTML = `
-                        <div class="flex items-center gap-1.5 mb-1">
-                            <span class="text-base">${skin.symbol}</span>
-                            <span class="text-xs font-bold font-orbitron text-white">${skin.name}</span>
+                        <div class="flex items-center gap-1 mb-1">
+                            <span class="text-sm">${skin.symbol}</span>
+                            <span class="text-[11px] font-bold font-orbitron text-white">${skin.name}</span>
                         </div>
-                        <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-2">${skin.category}</div>
+                        <div class="text-[9px] text-gray-400 uppercase tracking-widest mb-1.5">${skin.category}</div>
                         ${actionBtnHTML}
                     `;
                     skinsGrid.appendChild(card);
@@ -939,25 +601,25 @@
                     const isSelected = currentPetId === pet.id;
 
                     const card = document.createElement('div');
-                    card.className = `skin-card p-3 rounded-2xl flex flex-col items-center justify-between text-center relative ${isSelected ? 'selected' : ''}`;
+                    card.className = `skin-card p-2.5 rounded-2xl flex flex-col items-center justify-between text-center relative ${isSelected ? 'selected' : ''}`;
                     
                     let actionBtnHTML = '';
                     if (isSelected) {
-                        actionBtnHTML = `<span class="text-xs font-bold text-amber-400 font-orbitron py-1">ACTIVE PET</span>`;
+                        actionBtnHTML = `<span class="text-[11px] font-bold text-amber-400 font-orbitron py-1">ACTIVE PET</span>`;
                     } else if (isUnlocked) {
-                        actionBtnHTML = `<button onclick="equipPet('${pet.id}')" class="w-full py-1.5 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-xs font-bold font-orbitron hover:bg-amber-500/40">EQUIP</button>`;
+                        actionBtnHTML = `<button onclick="equipPet('${pet.id}')" class="w-full py-1 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-[11px] font-bold font-orbitron hover:bg-amber-500/40">EQUIP</button>`;
                     } else if (pet.type === 'coin') {
-                        actionBtnHTML = `<button onclick="buyPetWithCoins('${pet.id}', ${pet.cost})" class="w-full py-1.5 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-xs font-bold font-orbitron hover:bg-amber-500/40">🪙 ${pet.cost}</button>`;
+                        actionBtnHTML = `<button onclick="buyPetWithCoins('${pet.id}', ${pet.cost})" class="w-full py-1 rounded-lg bg-amber-500/20 border border-amber-500 text-amber-300 text-[11px] font-bold font-orbitron hover:bg-amber-500/40">🪙 ${pet.cost}</button>`;
                     } else {
-                        actionBtnHTML = `<button onclick="watchAdForSkin('${pet.id}', 'pet')" class="w-full py-1.5 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500 text-fuchsia-300 text-xs font-bold font-orbitron hover:bg-fuchsia-500/40">📺 WATCH AD (10s SKILL)</button>`;
+                        actionBtnHTML = `<button onclick="watchAdForSkin('${pet.id}', 'pet')" class="w-full py-1 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500 text-fuchsia-300 text-[11px] font-bold font-orbitron hover:bg-fuchsia-500/40">📺 WATCH AD (SKILL)</button>`;
                     }
 
                     card.innerHTML = `
-                        <div class="flex items-center gap-1.5 mb-1">
-                            <span class="text-lg">${pet.symbol}</span>
-                            <span class="text-xs font-bold font-orbitron text-white">${pet.name}</span>
+                        <div class="flex items-center gap-1 mb-1">
+                            <span class="text-sm">${pet.symbol}</span>
+                            <span class="text-[11px] font-bold font-orbitron text-white">${pet.name}</span>
                         </div>
-                        <div class="text-[10px] text-amber-200/80 mb-2">${pet.power}</div>
+                        <div class="text-[9px] text-amber-200/80 mb-1.5 leading-tight">${pet.power}</div>
                         ${actionBtnHTML}
                     `;
                     skinsGrid.appendChild(card);
@@ -1185,8 +847,6 @@
                         soundFX.playDash();
                         triggerScreenShake(5, 8);
                         createParticles(this.x + this.width / 2, this.y + this.height / 2, '#ff00ff', 20);
-                        updateQuestProgress('dash', 1);
-                        updateLifetimeStat('lifetime_dash', 1);
                     }
                 }
 
@@ -1769,7 +1429,6 @@
 
             soundFX.playPowerup();
             skillCooldowns[skillId] = skillMaxCooldowns[skillId];
-            updateQuestProgress('skill', 1);
 
             if (skillId === 1) {
                 bossInstance.takeDamage(35);
@@ -1793,7 +1452,6 @@
 
         function triggerAdPetSkill() {
             soundFX.playPowerup();
-            updateQuestProgress('skill', 1);
             const pet = PETS.find(p => p.id === currentPetId);
             if (!pet) return;
 
@@ -1875,13 +1533,9 @@
             scoreValEl.textContent = String(score).padStart(6, '0');
             multiplierBadgeEl.textContent = `${scoreMultiplier.toFixed(1)}x MULTI`;
 
-            updateQuestProgress('score', pts);
-            updateLifetimeStat('lifetime_score', pts);
-
             if (combo > 3 && comboCountEl) {
                 comboCountEl.textContent = `${combo} COMBO!`;
                 comboCountEl.style.opacity = '1';
-                updateQuestProgress('combo', combo);
             }
 
             if (!isBossActive) {
@@ -1915,7 +1569,6 @@
             levelProgressBar.style.width = '0%';
             soundFX.playPowerup();
             showAnnouncement("LEVEL UP!", `STAGE ${currentLevel} REACHED`);
-            updateQuestProgress('level', 1);
         }
 
         function spawnBoss() {
@@ -1938,8 +1591,6 @@
             addScore(3000);
             advanceLevel();
             soundFX.playPowerup();
-            updateQuestProgress('boss', 1);
-            updateLifetimeStat('lifetime_boss', 1);
         }
 
         function resetCombo() {
@@ -1963,7 +1614,6 @@
         function activatePowerup(type) {
             soundFX.playPowerup();
             activePowerup = type;
-            updateQuestProgress('powerup', 1);
             if (type === 'SHIELD') {
                 hasShield = true;
                 showPowerupBanner('SHIELD ACTIVE', '#00f3ff');
@@ -2081,7 +1731,6 @@
 
             coins = 0;
             updateCoins(0);
-            updateQuestProgress('runs', 1);
 
             if (score > highScore) {
                 highScore = score;
@@ -2113,12 +1762,6 @@
             const dt = (now - lastTime) / 1000;
             lastTime = now;
             gameTime += dt;
-
-            // Track time in quests and achievements (every 1 second approx)
-            if (dt < 0.2) {
-                updateQuestProgress('time', Math.round(dt));
-                updateLifetimeStat('lifetime_time', Math.round(dt));
-            }
 
             const activePetObj = PETS.find(p => p.id === currentPetId);
             if (activePetObj && activePetObj.type === 'ad') {
@@ -2256,82 +1899,120 @@
             ctx.shadowBlur = 15;
             ctx.shadowColor = ctx.strokeStyle;
             ctx.stroke();
-            ctx.restore();
 
-            for (let letter of letters) letter.draw(ctx);
-            for (let orb of powerups) orb.draw(ctx);
+            ctx.shadowBlur = 0;
+            const gridSpacing = 40;
+            for (let x = 0; x < window.innerWidth; x += gridSpacing) {
+                ctx.beginPath();
+                ctx.moveTo(x, groundY);
+                ctx.lineTo(x + (x - window.innerWidth / 2) * 0.5, window.innerHeight);
+                ctx.strokeStyle = 'rgba(0, 243, 255, 0.08)';
+                ctx.stroke();
+            }
+
+            powerups.forEach(p => p.draw(ctx));
+            letters.forEach(l => l.draw(ctx));
+            if (isBossActive && bossInstance) bossInstance.draw(ctx);
             player.draw(ctx);
             petCompanion.draw(ctx);
-            if (isBossActive && bossInstance) bossInstance.draw(ctx);
 
-            for (let ps of plasmaSlashes) {
+            plasmaSlashes.forEach(ps => {
                 ctx.save();
+                const t = ps.progress / ps.maxProgress;
+                const currentX = ps.x + (ps.targetX - ps.x) * t;
+                const currentY = ps.y + (ps.targetY - ps.y) * t;
+
                 ctx.strokeStyle = '#00f3ff';
-                ctx.lineWidth = 4;
-                ctx.shadowBlur = 20;
+                ctx.lineWidth = 7 * (1 - t);
+                ctx.shadowBlur = 35;
                 ctx.shadowColor = '#00f3ff';
-                ctx.beginPath();
-                ctx.moveTo(ps.x, ps.y);
-                ctx.lineTo(ps.targetX, ps.targetY);
-                ctx.stroke();
-                ctx.restore();
-            }
 
-            for (let p of particles) {
+                ctx.beginPath();
+                ctx.arc(currentX, currentY, 90 * t, 0, Math.PI * 2);
+                ctx.stroke();
+
+                ps.arcs.forEach(arc => {
+                    ctx.strokeStyle = '#ff00ff';
+                    ctx.lineWidth = 3.5;
+                    ctx.beginPath();
+                    const angle = t * Math.PI * 4 * arc.speed + arc.angleOffset;
+                    ctx.arc(currentX, currentY, arc.radius * t, angle, angle + Math.PI / 2);
+                    ctx.stroke();
+                });
+
+                ctx.restore();
+            });
+
+            particles.forEach(p => {
                 ctx.save();
-                ctx.globalAlpha = p.alpha;
-                ctx.fillStyle = p.color;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = p.color;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = Math.max(0, p.alpha);
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = p.color;
                 ctx.fill();
                 ctx.restore();
-            }
+            });
 
+            ctx.restore();
             requestAnimationFrame(gameLoop);
         }
 
-        // Event Listeners for Controls
         window.addEventListener('keydown', (e) => {
             soundFX.init();
-            if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
-            if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
-            if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') keys.jump = true;
-            if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.dash = true;
-            if (e.code === 'Digit1') useBossSkill(1);
-            if (e.code === 'Digit2') useBossSkill(2);
-            if (e.code === 'Digit3') useBossSkill(3);
-            if (e.code === 'KeyP') togglePause();
+            if (e.code === 'Escape') {
+                togglePause();
+                return;
+            }
+            if (isBossActive) {
+                if (e.code === 'Digit1' || e.code === 'Numpad1') useBossSkill(1);
+                if (e.code === 'Digit2' || e.code === 'Numpad2') useBossSkill(2);
+                if (e.code === 'Digit3' || e.code === 'Numpad3') useBossSkill(3);
+            }
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') keys.left = true;
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') keys.right = true;
+            if (e.code === 'KeyW' || e.code === 'ArrowUp') keys.jump = true;
+            if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+                if (!keys.dash) keys.dash = true;
+            }
         });
 
         window.addEventListener('keyup', (e) => {
-            if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
-            if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
-            if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') keys.jump = false;
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') keys.left = false;
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') keys.right = false;
+            if (e.code === 'KeyW' || e.code === 'ArrowUp') {
+                keys.jump = false;
+                jumpKeyWasPressed = false;
+            }
             if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.dash = false;
         });
+
+        document.getElementById('skill-1-btn').addEventListener('click', () => useBossSkill(1));
+        document.getElementById('skill-2-btn').addEventListener('click', () => useBossSkill(2));
+        document.getElementById('skill-3-btn').addEventListener('click', () => useBossSkill(3));
 
         const btnLeft = document.getElementById('btn-left');
         const btnRight = document.getElementById('btn-right');
         const btnJump = document.getElementById('btn-jump');
         const btnDash = document.getElementById('btn-dash');
-        const skill1Btn = document.getElementById('skill-1-btn');
-        const skill2Btn = document.getElementById('skill-2-btn');
-        const skill3Btn = document.getElementById('skill-3-btn');
 
-        btnLeft.addEventListener('touchstart', (e) => { e.preventDefault(); soundFX.init(); keys.left = true; });
-        btnLeft.addEventListener('touchend', (e) => { e.preventDefault(); keys.left = false; });
-        btnRight.addEventListener('touchstart', (e) => { e.preventDefault(); soundFX.init(); keys.right = true; });
-        btnRight.addEventListener('touchend', (e) => { e.preventDefault(); keys.right = false; });
-        btnJump.addEventListener('touchstart', (e) => { e.preventDefault(); soundFX.init(); keys.jump = true; });
-        btnJump.addEventListener('touchend', (e) => { e.preventDefault(); keys.jump = false; });
-        btnDash.addEventListener('touchstart', (e) => { e.preventDefault(); soundFX.init(); keys.dash = true; });
-        btnDash.addEventListener('touchend', (e) => { e.preventDefault(); keys.dash = false; });
+        function bindTouchBtn(btn, keyProp) {
+            btn.addEventListener('touchstart', (e) => { e.preventDefault(); soundFX.init(); keys[keyProp] = true; });
+            btn.addEventListener('touchend', (e) => { 
+                e.preventDefault(); 
+                keys[keyProp] = false; 
+                if(keyProp === 'jump') jumpKeyWasPressed = false;
+            });
+            btn.addEventListener('mousedown', () => { soundFX.init(); keys[keyProp] = true; });
+            btn.addEventListener('mouseup', () => { keys[keyProp] = false; if(keyProp === 'jump') jumpKeyWasPressed = false; });
+            btn.addEventListener('mouseleave', () => { keys[keyProp] = false; if(keyProp === 'jump') jumpKeyWasPressed = false; });
+        }
 
-        skill1Btn.addEventListener('click', () => useBossSkill(1));
-        skill2Btn.addEventListener('click', () => useBossSkill(2));
-        skill3Btn.addEventListener('click', () => useBossSkill(3));
+        bindTouchBtn(btnLeft, 'left');
+        bindTouchBtn(btnRight, 'right');
+        bindTouchBtn(btnJump, 'jump');
+        bindTouchBtn(btnDash, 'dash');
 
         startBtn.addEventListener('click', () => {
             soundFX.init();
